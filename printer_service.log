@@ -1,0 +1,361 @@
+2025-06-17 22:46:17,538 [INFO] Initializing PrintAgent service with persistence in current directory
+2025-06-17 22:46:17,548 [INFO] Starting Flask server on port 8000
+2025-06-17 22:46:17,582 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://192.168.11.168:8000
+2025-06-17 22:46:17,583 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-17 22:46:48,449 [INFO] 127.0.0.1 - - [17/Jun/2025 22:46:48] "OPTIONS /select-printer HTTP/1.1" 200 -
+2025-06-17 22:46:48,707 [INFO] Saved selected printer: printer WD8260 (copy 2)
+2025-06-17 22:46:48,708 [INFO] 127.0.0.1 - - [17/Jun/2025 22:46:48] "POST /select-printer HTTP/1.1" 200 -
+2025-06-17 22:47:39,528 [INFO] Endpoint /printers called
+2025-06-17 22:47:39,539 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 22:47:39,540 [INFO] 127.0.0.1 - - [17/Jun/2025 22:47:39] "GET /printers HTTP/1.1" 200 -
+2025-06-17 22:47:39,843 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 2)
+2025-06-17 22:47:39,843 [INFO] 127.0.0.1 - - [17/Jun/2025 22:47:39] "GET /selected HTTP/1.1" 200 -
+2025-06-17 22:48:19,654 [INFO] Endpoint /printers called
+2025-06-17 22:48:19,656 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 22:48:19,657 [INFO] 127.0.0.1 - - [17/Jun/2025 22:48:19] "GET /printers HTTP/1.1" 200 -
+2025-06-17 22:48:19,657 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 2)
+2025-06-17 22:48:19,657 [INFO] 127.0.0.1 - - [17/Jun/2025 22:48:19] "GET /selected HTTP/1.1" 200 -
+2025-06-17 22:48:21,180 [INFO] Endpoint /status called for printer WD8260 (copy 2), connected=True
+2025-06-17 22:48:21,182 [INFO] 127.0.0.1 - - [17/Jun/2025 22:48:21] "GET /status HTTP/1.1" 200 -
+2025-06-17 22:48:23,335 [INFO] Endpoint /status called for printer WD8260 (copy 2), connected=True
+2025-06-17 22:48:23,336 [INFO] 127.0.0.1 - - [17/Jun/2025 22:48:23] "GET /status HTTP/1.1" 200 -
+2025-06-17 22:48:24,344 [INFO] 127.0.0.1 - - [17/Jun/2025 22:48:24] "OPTIONS /select-printer HTTP/1.1" 200 -
+2025-06-17 22:48:24,652 [INFO] 127.0.0.1 - - [17/Jun/2025 22:48:24] "[31m[1mPOST /select-printer HTTP/1.1[0m" 400 -
+2025-06-17 22:48:27,423 [INFO] 127.0.0.1 - - [17/Jun/2025 22:48:27] "[31m[1mPOST /select-printer HTTP/1.1[0m" 400 -
+2025-06-17 22:48:44,396 [INFO] 127.0.0.1 - - [17/Jun/2025 22:48:44] "OPTIONS /select-printer HTTP/1.1" 200 -
+2025-06-17 22:48:44,657 [INFO] Saved selected printer: printer WD8260 (copy 3)
+2025-06-17 22:48:44,657 [INFO] 127.0.0.1 - - [17/Jun/2025 22:48:44] "POST /select-printer HTTP/1.1" 200 -
+2025-06-17 22:48:46,174 [INFO] Endpoint /status called for printer WD8260 (copy 3), connected=True
+2025-06-17 22:48:46,176 [INFO] 127.0.0.1 - - [17/Jun/2025 22:48:46] "GET /status HTTP/1.1" 200 -
+2025-06-17 22:48:47,532 [INFO] Endpoint /status called for printer WD8260 (copy 3), connected=True
+2025-06-17 22:48:47,533 [INFO] 127.0.0.1 - - [17/Jun/2025 22:48:47] "GET /status HTTP/1.1" 200 -
+2025-06-17 22:48:59,300 [INFO] Endpoint /printers called
+2025-06-17 22:48:59,303 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 22:48:59,306 [INFO] 127.0.0.1 - - [17/Jun/2025 22:48:59] "GET /printers HTTP/1.1" 200 -
+2025-06-17 22:48:59,610 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 3)
+2025-06-17 22:48:59,611 [INFO] 127.0.0.1 - - [17/Jun/2025 22:48:59] "GET /selected HTTP/1.1" 200 -
+2025-06-17 22:49:05,783 [INFO] Endpoint /printers called
+2025-06-17 22:49:05,804 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 22:49:05,805 [INFO] 127.0.0.1 - - [17/Jun/2025 22:49:05] "GET /printers HTTP/1.1" 200 -
+2025-06-17 22:49:05,808 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 3)
+2025-06-17 22:49:05,809 [INFO] 127.0.0.1 - - [17/Jun/2025 22:49:05] "GET /selected HTTP/1.1" 200 -
+2025-06-17 22:51:32,644 [INFO] Endpoint /printers called
+2025-06-17 22:51:32,648 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 22:51:32,650 [INFO] 127.0.0.1 - - [17/Jun/2025 22:51:32] "GET /printers HTTP/1.1" 200 -
+2025-06-17 22:51:32,651 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 3)
+2025-06-17 22:51:32,652 [INFO] 127.0.0.1 - - [17/Jun/2025 22:51:32] "GET /selected HTTP/1.1" 200 -
+2025-06-17 22:51:50,328 [INFO] Endpoint /printers called
+2025-06-17 22:51:50,331 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 22:51:50,332 [INFO] 127.0.0.1 - - [17/Jun/2025 22:51:50] "GET /printers HTTP/1.1" 200 -
+2025-06-17 22:51:50,635 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 3)
+2025-06-17 22:51:50,636 [INFO] 127.0.0.1 - - [17/Jun/2025 22:51:50] "GET /selected HTTP/1.1" 200 -
+2025-06-17 22:51:55,658 [INFO] Endpoint /printers called
+2025-06-17 22:51:55,660 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 22:51:55,662 [INFO] 127.0.0.1 - - [17/Jun/2025 22:51:55] "GET /printers HTTP/1.1" 200 -
+2025-06-17 22:51:55,664 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 3)
+2025-06-17 22:51:55,664 [INFO] 127.0.0.1 - - [17/Jun/2025 22:51:55] "GET /selected HTTP/1.1" 200 -
+2025-06-17 22:51:57,360 [INFO] Endpoint /printers called
+2025-06-17 22:51:57,363 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 22:51:57,364 [INFO] 127.0.0.1 - - [17/Jun/2025 22:51:57] "GET /printers HTTP/1.1" 200 -
+2025-06-17 22:51:57,666 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 3)
+2025-06-17 22:51:57,668 [INFO] 127.0.0.1 - - [17/Jun/2025 22:51:57] "GET /selected HTTP/1.1" 200 -
+2025-06-17 22:52:01,246 [INFO] Endpoint /print/printer WD8260 (copy 3)/test called
+2025-06-17 22:52:01,370 [INFO] Test printed on: printer WD8260 (copy 3)
+2025-06-17 22:52:01,371 [INFO] 127.0.0.1 - - [17/Jun/2025 22:52:01] "POST /print/printer%20WD8260%20(copy%203)/test HTTP/1.1" 200 -
+2025-06-17 22:52:04,252 [INFO] 127.0.0.1 - - [17/Jun/2025 22:52:04] "OPTIONS /select-printer HTTP/1.1" 200 -
+2025-06-17 22:52:04,561 [INFO] Saved selected printer: printer WD8260 (copy 2)
+2025-06-17 22:52:04,562 [INFO] 127.0.0.1 - - [17/Jun/2025 22:52:04] "POST /select-printer HTTP/1.1" 200 -
+2025-06-17 22:52:04,993 [INFO] Endpoint /print/printer WD8260 (copy 2)/test called
+2025-06-17 22:52:05,089 [INFO] Test printed on: printer WD8260 (copy 2)
+2025-06-17 22:52:05,090 [INFO] 127.0.0.1 - - [17/Jun/2025 22:52:05] "POST /print/printer%20WD8260%20(copy%202)/test HTTP/1.1" 200 -
+2025-06-17 22:52:07,111 [INFO] Saved selected printer: printer WD8260 (copy 1)
+2025-06-17 22:52:07,112 [INFO] 127.0.0.1 - - [17/Jun/2025 22:52:07] "POST /select-printer HTTP/1.1" 200 -
+2025-06-17 22:52:07,366 [INFO] Endpoint /print/printer WD8260 (copy 1)/test called
+2025-06-17 22:52:07,495 [INFO] Test printed on: printer WD8260 (copy 1)
+2025-06-17 22:52:07,496 [INFO] 127.0.0.1 - - [17/Jun/2025 22:52:07] "POST /print/printer%20WD8260%20(copy%201)/test HTTP/1.1" 200 -
+2025-06-17 22:52:11,434 [INFO] Endpoint /status called for printer WD8260 (copy 1), connected=True
+2025-06-17 22:52:11,435 [INFO] 127.0.0.1 - - [17/Jun/2025 22:52:11] "GET /status HTTP/1.1" 200 -
+2025-06-17 23:14:54,676 [INFO] Endpoint /printers called
+2025-06-17 23:14:54,690 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:14:54,691 [INFO] 127.0.0.1 - - [17/Jun/2025 23:14:54] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:14:54,692 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:14:54,692 [INFO] 127.0.0.1 - - [17/Jun/2025 23:14:54] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:17:18,681 [INFO] Endpoint /printers called
+2025-06-17 23:17:18,689 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:17:18,691 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:18] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:17:18,693 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:17:18,693 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:18] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:17:33,400 [INFO] Endpoint /printers called
+2025-06-17 23:17:33,405 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:17:33,405 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:33] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:17:33,720 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:17:33,721 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:33] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:17:40,927 [INFO] Endpoint /printers called
+2025-06-17 23:17:40,929 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:17:40,930 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:40] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:17:40,931 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:17:40,932 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:40] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:17:41,190 [INFO] Endpoint /printers called
+2025-06-17 23:17:41,192 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:17:41,192 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:41] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:17:41,251 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:17:41,251 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:41] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:17:43,221 [INFO] Endpoint /printers called
+2025-06-17 23:17:43,224 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:17:43,224 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:43] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:17:43,531 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:17:43,532 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:43] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:17:45,992 [INFO] Endpoint /printers called
+2025-06-17 23:17:45,994 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:17:45,995 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:45] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:17:45,996 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:17:45,997 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:45] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:17:54,207 [INFO] Endpoint /printers called
+2025-06-17 23:17:54,209 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:17:54,210 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:54] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:17:54,516 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:17:54,517 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:54] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:17:58,701 [INFO] Endpoint /printers called
+2025-06-17 23:17:58,704 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:17:58,706 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:58] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:17:58,707 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:17:58,707 [INFO] 127.0.0.1 - - [17/Jun/2025 23:17:58] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:18:04,011 [INFO] Endpoint /printers called
+2025-06-17 23:18:04,015 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:18:04,016 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:04] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:18:04,322 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:18:04,322 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:04] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:18:05,955 [INFO] Endpoint /printers called
+2025-06-17 23:18:05,959 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:18:05,960 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:05] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:18:05,960 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:18:05,962 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:05] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:18:11,531 [INFO] Endpoint /printers called
+2025-06-17 23:18:11,533 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:18:11,534 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:11] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:18:11,845 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:18:11,846 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:11] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:18:19,466 [INFO] Endpoint /printers called
+2025-06-17 23:18:19,470 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:18:19,470 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:19] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:18:19,471 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:18:19,472 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:19] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:18:20,527 [INFO] Endpoint /printers called
+2025-06-17 23:18:20,530 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:18:20,531 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:20] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:18:20,837 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:18:20,838 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:20] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:18:31,121 [INFO] Endpoint /printers called
+2025-06-17 23:18:31,123 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:18:31,125 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:31] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:18:31,126 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:18:31,126 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:31] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:18:51,063 [INFO] Endpoint /printers called
+2025-06-17 23:18:51,066 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:18:51,067 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:51] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:18:51,377 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:18:51,377 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:51] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:18:59,089 [INFO] Endpoint /printers called
+2025-06-17 23:18:59,092 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:18:59,093 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:59] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:18:59,096 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:18:59,097 [INFO] 127.0.0.1 - - [17/Jun/2025 23:18:59] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:19:07,693 [INFO] Endpoint /printers called
+2025-06-17 23:19:07,695 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:19:07,696 [INFO] 127.0.0.1 - - [17/Jun/2025 23:19:07] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:19:07,996 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:19:07,996 [INFO] 127.0.0.1 - - [17/Jun/2025 23:19:07] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:19:25,496 [INFO] Endpoint /printers called
+2025-06-17 23:19:25,498 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:19:25,499 [INFO] 127.0.0.1 - - [17/Jun/2025 23:19:25] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:19:25,500 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:19:25,500 [INFO] 127.0.0.1 - - [17/Jun/2025 23:19:25] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:19:27,640 [INFO] Endpoint /printers called
+2025-06-17 23:19:27,643 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:19:27,644 [INFO] 127.0.0.1 - - [17/Jun/2025 23:19:27] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:19:27,943 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:19:27,943 [INFO] 127.0.0.1 - - [17/Jun/2025 23:19:27] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:19:40,917 [INFO] Endpoint /printers called
+2025-06-17 23:19:40,919 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:19:40,920 [INFO] 127.0.0.1 - - [17/Jun/2025 23:19:40] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:19:40,920 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:19:40,921 [INFO] 127.0.0.1 - - [17/Jun/2025 23:19:40] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:19:46,066 [INFO] Endpoint /printers called
+2025-06-17 23:19:46,069 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:19:46,069 [INFO] 127.0.0.1 - - [17/Jun/2025 23:19:46] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:19:46,384 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:19:46,385 [INFO] 127.0.0.1 - - [17/Jun/2025 23:19:46] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:19:50,287 [INFO] Endpoint /printers called
+2025-06-17 23:19:50,290 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:19:50,291 [INFO] 127.0.0.1 - - [17/Jun/2025 23:19:50] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:19:50,292 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:19:50,293 [INFO] 127.0.0.1 - - [17/Jun/2025 23:19:50] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:19:58,246 [INFO] Endpoint /printers called
+2025-06-17 23:19:58,248 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:19:58,248 [INFO] 127.0.0.1 - - [17/Jun/2025 23:19:58] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:19:58,556 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:19:58,556 [INFO] 127.0.0.1 - - [17/Jun/2025 23:19:58] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:20:08,552 [INFO] Endpoint /printers called
+2025-06-17 23:20:08,555 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:20:08,556 [INFO] 127.0.0.1 - - [17/Jun/2025 23:20:08] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:20:08,557 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:20:08,558 [INFO] 127.0.0.1 - - [17/Jun/2025 23:20:08] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:20:21,656 [INFO] Endpoint /printers called
+2025-06-17 23:20:21,658 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:20:21,659 [INFO] 127.0.0.1 - - [17/Jun/2025 23:20:21] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:20:21,974 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:20:21,974 [INFO] 127.0.0.1 - - [17/Jun/2025 23:20:21] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:20:24,225 [INFO] Endpoint /printers called
+2025-06-17 23:20:24,227 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:20:24,227 [INFO] 127.0.0.1 - - [17/Jun/2025 23:20:24] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:20:24,228 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:20:24,229 [INFO] 127.0.0.1 - - [17/Jun/2025 23:20:24] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:20:27,609 [INFO] Endpoint /printers called
+2025-06-17 23:20:27,613 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:20:27,613 [INFO] 127.0.0.1 - - [17/Jun/2025 23:20:27] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:20:27,914 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:20:27,915 [INFO] 127.0.0.1 - - [17/Jun/2025 23:20:27] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:20:30,132 [INFO] Endpoint /printers called
+2025-06-17 23:20:30,135 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:20:30,137 [INFO] 127.0.0.1 - - [17/Jun/2025 23:20:30] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:20:30,138 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:20:30,139 [INFO] 127.0.0.1 - - [17/Jun/2025 23:20:30] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:20:35,367 [INFO] Endpoint /printers called
+2025-06-17 23:20:35,369 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:20:35,370 [INFO] 127.0.0.1 - - [17/Jun/2025 23:20:35] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:20:35,684 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:20:35,684 [INFO] 127.0.0.1 - - [17/Jun/2025 23:20:35] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:20:38,884 [INFO] Endpoint /printers called
+2025-06-17 23:20:38,886 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:20:38,886 [INFO] 127.0.0.1 - - [17/Jun/2025 23:20:38] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:20:38,888 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:20:38,889 [INFO] 127.0.0.1 - - [17/Jun/2025 23:20:38] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:22:23,194 [INFO] Endpoint /printers called
+2025-06-17 23:22:23,196 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:22:23,198 [INFO] 127.0.0.1 - - [17/Jun/2025 23:22:23] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:22:23,198 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:22:23,199 [INFO] 127.0.0.1 - - [17/Jun/2025 23:22:23] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:22:26,353 [INFO] Endpoint /status called for printer WD8260 (copy 1), connected=True
+2025-06-17 23:22:26,354 [INFO] 127.0.0.1 - - [17/Jun/2025 23:22:26] "GET /status HTTP/1.1" 200 -
+2025-06-17 23:22:29,240 [INFO] 127.0.0.1 - - [17/Jun/2025 23:22:29] "OPTIONS /select-printer HTTP/1.1" 200 -
+2025-06-17 23:22:29,501 [INFO] Saved selected printer: printer WD8260 (copy 3)
+2025-06-17 23:22:29,501 [INFO] 127.0.0.1 - - [17/Jun/2025 23:22:29] "POST /select-printer HTTP/1.1" 200 -
+2025-06-17 23:22:30,371 [INFO] Endpoint /status called for printer WD8260 (copy 3), connected=True
+2025-06-17 23:22:30,372 [INFO] 127.0.0.1 - - [17/Jun/2025 23:22:30] "GET /status HTTP/1.1" 200 -
+2025-06-17 23:22:31,779 [INFO] Endpoint /print/printer WD8260 (copy 3)/test called
+2025-06-17 23:22:31,849 [INFO] Test printed on: printer WD8260 (copy 3)
+2025-06-17 23:22:31,850 [INFO] 127.0.0.1 - - [17/Jun/2025 23:22:31] "POST /print/printer%20WD8260%20(copy%203)/test HTTP/1.1" 200 -
+2025-06-17 23:22:34,313 [INFO] 127.0.0.1 - - [17/Jun/2025 23:22:34] "OPTIONS /select-printer HTTP/1.1" 200 -
+2025-06-17 23:22:34,629 [INFO] Saved selected printer: printer WD8260 (copy 1)
+2025-06-17 23:22:34,629 [INFO] 127.0.0.1 - - [17/Jun/2025 23:22:34] "POST /select-printer HTTP/1.1" 200 -
+2025-06-17 23:22:35,112 [INFO] Endpoint /print/printer WD8260 (copy 1)/test called
+2025-06-17 23:22:35,170 [INFO] Test printed on: printer WD8260 (copy 1)
+2025-06-17 23:22:35,171 [INFO] 127.0.0.1 - - [17/Jun/2025 23:22:35] "POST /print/printer%20WD8260%20(copy%201)/test HTTP/1.1" 200 -
+2025-06-17 23:23:05,374 [INFO] 127.0.0.1 - - [17/Jun/2025 23:23:05] "OPTIONS /select-printer HTTP/1.1" 200 -
+2025-06-17 23:23:05,633 [INFO] Saved selected printer: printer WD8260
+2025-06-17 23:23:05,634 [INFO] 127.0.0.1 - - [17/Jun/2025 23:23:05] "POST /select-printer HTTP/1.1" 200 -
+2025-06-17 23:40:56,659 [INFO] Endpoint /printers called
+2025-06-17 23:40:56,662 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:40:56,663 [INFO] 127.0.0.1 - - [17/Jun/2025 23:40:56] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:40:56,664 [INFO] Endpoint /selected called, returning: printer WD8260
+2025-06-17 23:40:56,665 [INFO] 127.0.0.1 - - [17/Jun/2025 23:40:56] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:43:59,625 [INFO] Endpoint /printers called
+2025-06-17 23:43:59,628 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:43:59,630 [INFO] 127.0.0.1 - - [17/Jun/2025 23:43:59] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:43:59,631 [INFO] Endpoint /selected called, returning: printer WD8260
+2025-06-17 23:43:59,632 [INFO] 127.0.0.1 - - [17/Jun/2025 23:43:59] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:44:42,324 [INFO] Endpoint /printers called
+2025-06-17 23:44:42,326 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:44:42,326 [INFO] 127.0.0.1 - - [17/Jun/2025 23:44:42] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:44:42,633 [INFO] Endpoint /selected called, returning: printer WD8260
+2025-06-17 23:44:42,634 [INFO] 127.0.0.1 - - [17/Jun/2025 23:44:42] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:44:47,433 [INFO] 127.0.0.1 - - [17/Jun/2025 23:44:47] "[33mPOST /initialize HTTP/1.1[0m" 404 -
+2025-06-17 23:44:48,643 [INFO] 127.0.0.1 - - [17/Jun/2025 23:44:48] "[33mPOST /initialize HTTP/1.1[0m" 404 -
+2025-06-17 23:45:43,390 [INFO] Initializing PrintAgent service with persistence in current directory
+2025-06-17 23:45:43,396 [INFO] Starting Flask server on port 8000
+2025-06-17 23:45:43,423 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://192.168.11.168:8000
+2025-06-17 23:45:43,423 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-17 23:45:48,718 [INFO] Endpoint /initialize called
+2025-06-17 23:45:48,719 [INFO] Cleared selected printer file
+2025-06-17 23:45:48,720 [INFO] 127.0.0.1 - - [17/Jun/2025 23:45:48] "POST /initialize HTTP/1.1" 200 -
+2025-06-17 23:45:56,256 [INFO] 127.0.0.1 - - [17/Jun/2025 23:45:56] "OPTIONS /select-printer HTTP/1.1" 200 -
+2025-06-17 23:45:56,565 [INFO] Saved selected printer: printer WD8260 (copy 1)
+2025-06-17 23:45:56,566 [INFO] 127.0.0.1 - - [17/Jun/2025 23:45:56] "POST /select-printer HTTP/1.1" 200 -
+2025-06-17 23:45:57,879 [INFO] Endpoint /status called for printer WD8260 (copy 1), connected=True
+2025-06-17 23:45:57,880 [INFO] 127.0.0.1 - - [17/Jun/2025 23:45:57] "GET /status HTTP/1.1" 200 -
+2025-06-17 23:46:00,115 [INFO] Endpoint /print/test called, selected printer: printer WD8260 (copy 1)
+2025-06-17 23:46:00,194 [INFO] Test printed on: printer WD8260 (copy 1)
+2025-06-17 23:46:00,194 [INFO] 127.0.0.1 - - [17/Jun/2025 23:46:00] "POST /print/test HTTP/1.1" 200 -
+2025-06-17 23:56:56,664 [INFO] Endpoint /printers called
+2025-06-17 23:56:56,674 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:56:56,676 [INFO] 127.0.0.1 - - [17/Jun/2025 23:56:56] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:56:56,677 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:56:56,678 [INFO] 127.0.0.1 - - [17/Jun/2025 23:56:56] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:57:30,308 [INFO] Endpoint /printers called
+2025-06-17 23:57:30,311 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-17 23:57:30,311 [INFO] 127.0.0.1 - - [17/Jun/2025 23:57:30] "GET /printers HTTP/1.1" 200 -
+2025-06-17 23:57:30,626 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-17 23:57:30,626 [INFO] 127.0.0.1 - - [17/Jun/2025 23:57:30] "GET /selected HTTP/1.1" 200 -
+2025-06-17 23:57:50,718 [INFO] Endpoint /initialize called
+2025-06-17 23:57:50,719 [INFO] Cleared selected printer file
+2025-06-17 23:57:50,719 [INFO] 127.0.0.1 - - [17/Jun/2025 23:57:50] "POST /initialize HTTP/1.1" 200 -
+2025-06-17 23:59:03,637 [INFO] Endpoint /initialize called
+2025-06-17 23:59:03,638 [INFO] 127.0.0.1 - - [17/Jun/2025 23:59:03] "POST /initialize HTTP/1.1" 200 -
+2025-06-18 00:23:00,506 [INFO] Endpoint /initialize called
+2025-06-18 00:23:00,508 [INFO] 127.0.0.1 - - [18/Jun/2025 00:23:00] "POST /initialize HTTP/1.1" 200 -
+2025-06-18 00:23:05,732 [INFO] 127.0.0.1 - - [18/Jun/2025 00:23:05] "OPTIONS /select-printer HTTP/1.1" 200 -
+2025-06-18 00:23:06,046 [INFO] Saved selected printer: printer WD8260 (copy 1)
+2025-06-18 00:23:06,047 [INFO] 127.0.0.1 - - [18/Jun/2025 00:23:06] "POST /select-printer HTTP/1.1" 200 -
+2025-06-18 00:23:10,094 [INFO] Saved selected printer: printer WD8260 (copy 2)
+2025-06-18 00:23:10,095 [INFO] 127.0.0.1 - - [18/Jun/2025 00:23:10] "POST /select-printer HTTP/1.1" 200 -
+2025-06-18 00:23:12,693 [INFO] 127.0.0.1 - - [18/Jun/2025 00:23:12] "OPTIONS /select-printer HTTP/1.1" 200 -
+2025-06-18 00:23:12,954 [INFO] Saved selected printer: printer WD8260 (copy 1)
+2025-06-18 00:23:12,955 [INFO] 127.0.0.1 - - [18/Jun/2025 00:23:12] "POST /select-printer HTTP/1.1" 200 -
+2025-06-18 00:23:13,720 [INFO] Endpoint /status called for printer WD8260 (copy 1), connected=True
+2025-06-18 00:23:13,721 [INFO] 127.0.0.1 - - [18/Jun/2025 00:23:13] "GET /status HTTP/1.1" 200 -
+2025-06-18 00:23:15,413 [INFO] Endpoint /print/test called, selected printer: printer WD8260 (copy 1)
+2025-06-18 00:23:15,470 [INFO] Test printed on: printer WD8260 (copy 1)
+2025-06-18 00:23:15,471 [INFO] 127.0.0.1 - - [18/Jun/2025 00:23:15] "POST /print/test HTTP/1.1" 200 -
+2025-06-18 00:23:21,486 [INFO] Endpoint /printers called
+2025-06-18 00:23:21,488 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-18 00:23:21,488 [INFO] 127.0.0.1 - - [18/Jun/2025 00:23:21] "GET /printers HTTP/1.1" 200 -
+2025-06-18 00:23:21,802 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-18 00:23:21,802 [INFO] 127.0.0.1 - - [18/Jun/2025 00:23:21] "GET /selected HTTP/1.1" 200 -
+2025-06-18 00:23:23,684 [INFO] Endpoint /status called for printer WD8260 (copy 1), connected=True
+2025-06-18 00:23:23,684 [INFO] 127.0.0.1 - - [18/Jun/2025 00:23:23] "GET /status HTTP/1.1" 200 -
+2025-06-18 00:23:24,668 [INFO] Endpoint /print/test called, selected printer: printer WD8260 (copy 1)
+2025-06-18 00:23:24,726 [INFO] Test printed on: printer WD8260 (copy 1)
+2025-06-18 00:23:24,727 [INFO] 127.0.0.1 - - [18/Jun/2025 00:23:24] "POST /print/test HTTP/1.1" 200 -
+2025-06-18 00:53:29,048 [INFO] Endpoint /printers called
+2025-06-18 00:53:29,051 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-18 00:53:29,052 [INFO] 127.0.0.1 - - [18/Jun/2025 00:53:29] "GET /printers HTTP/1.1" 200 -
+2025-06-18 00:53:29,054 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-18 00:53:29,054 [INFO] 127.0.0.1 - - [18/Jun/2025 00:53:29] "GET /selected HTTP/1.1" 200 -
+2025-06-18 00:53:30,348 [INFO] Endpoint /initialize called
+2025-06-18 00:53:30,350 [INFO] Cleared selected printer file
+2025-06-18 00:53:30,351 [INFO] 127.0.0.1 - - [18/Jun/2025 00:53:30] "POST /initialize HTTP/1.1" 200 -
+2025-06-18 00:59:43,341 [INFO] 127.0.0.1 - - [18/Jun/2025 00:59:43] "OPTIONS /select-printer HTTP/1.1" 200 -
+2025-06-18 00:59:43,598 [INFO] Saved selected printer: printer WD8260 (copy 1)
+2025-06-18 00:59:43,606 [INFO] 127.0.0.1 - - [18/Jun/2025 00:59:43] "POST /select-printer HTTP/1.1" 200 -
+2025-06-18 00:59:47,510 [INFO] Endpoint /status called for printer WD8260 (copy 1), connected=True
+2025-06-18 00:59:47,512 [INFO] 127.0.0.1 - - [18/Jun/2025 00:59:47] "GET /status HTTP/1.1" 200 -
+2025-06-18 00:59:56,152 [INFO] Endpoint /print/test called, selected printer: printer WD8260 (copy 1)
+2025-06-18 00:59:56,249 [INFO] Test printed on: printer WD8260 (copy 1)
+2025-06-18 00:59:56,250 [INFO] 127.0.0.1 - - [18/Jun/2025 00:59:56] "POST /print/test HTTP/1.1" 200 -
+2025-06-18 00:59:57,576 [INFO] Endpoint /print/test called, selected printer: printer WD8260 (copy 1)
+2025-06-18 00:59:57,649 [INFO] Test printed on: printer WD8260 (copy 1)
+2025-06-18 00:59:57,650 [INFO] 127.0.0.1 - - [18/Jun/2025 00:59:57] "POST /print/test HTTP/1.1" 200 -
+2025-06-18 01:00:03,059 [INFO] Endpoint /printers called
+2025-06-18 01:00:03,061 [INFO] Found printers: ['OneNote for Windows 10', 'printer WD8260 (copy 3)', 'printer WD8260 (copy 2)', 'printer WD8260 (copy 1)', 'printer WD8260', 'OneNote (Desktop)', 'Microsoft XPS Document Writer', 'Microsoft Print to PDF', 'Fax']
+2025-06-18 01:00:03,062 [INFO] 127.0.0.1 - - [18/Jun/2025 01:00:03] "GET /printers HTTP/1.1" 200 -
+2025-06-18 01:00:03,063 [INFO] Endpoint /selected called, returning: printer WD8260 (copy 1)
+2025-06-18 01:00:03,064 [INFO] 127.0.0.1 - - [18/Jun/2025 01:00:03] "GET /selected HTTP/1.1" 200 -
+2025-06-18 01:06:43,993 [INFO] Endpoint /initialize called
+2025-06-18 01:06:43,993 [INFO] Cleared selected printer file
+2025-06-18 01:06:43,994 [INFO] 127.0.0.1 - - [18/Jun/2025 01:06:43] "POST /initialize HTTP/1.1" 200 -
