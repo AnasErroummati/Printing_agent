@@ -17,9 +17,10 @@ sc stop PrintAgentService
 sc delete PrintAgentService
 
 :: Install fresh
-PrintAgentService.exe install
-sc config PrintAgentService start= auto
-sc failure PrintAgentService reset= 30 actions= restart/5000/restart/5000/restart/5000
+printService.exe install
+sc config PrintService start= auto
+sc failure PrintService reset= 30 actions= restart/5000/restart/5000/restart/5000
 
 :: Start service
-net start PrintAgentService
+
+net start PrintService
