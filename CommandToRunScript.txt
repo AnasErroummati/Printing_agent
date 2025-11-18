@@ -14,7 +14,7 @@ python -m PyInstaller \
 ON command line with admin priveleges we do:
 
 :: Uninstall previous version if exists
-sc stop PrintAgentSerice
+sc stop PrintAgentService
 sc delete PrintAgentService
 
 :: Install fresh
@@ -24,3 +24,4 @@ sc failure PrintAgentService reset= 30 actions= restart/5000/restart/5000/restar
 
 :: Start service
 net start PrintAgentService
+
