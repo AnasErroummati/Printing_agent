@@ -2,25 +2,25 @@ python -m PyInstaller \
   --onefile \
   --name PrintAgentService \
   --hidden-import flask \
+  --hidden-import flask_cors \
   --hidden-import win32timezone \
   --hidden-import win32print \
   --hidden-import win32service \
   --hidden-import win32event \
   --hidden-import servicemanager \
   --hidden-import win32api \
-  --clean printer_service.py
+  printer_service.py
 
 ON command line with admin priveleges we do:
 
 :: Uninstall previous version if exists
-sc stop PrintAgentService
+sc stop PrintAgentSerice
 sc delete PrintAgentService
 
 :: Install fresh
-printService.exe install
-sc config printService start= auto
-sc failure printService reset= 30 actions= restart/5000/restart/5000/restart/5000
+PrintAgentService.exe install
+sc config PrintAgentService start= auto
+sc failure PrintAgentService reset= 30 actions= restart/5000/restart/5000/restart/5000
 
 :: Start service
-
-net start PrintService
+net start PrintAgentService
