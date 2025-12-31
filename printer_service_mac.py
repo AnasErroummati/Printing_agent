@@ -5,10 +5,11 @@ import base64
 import io
 import logging
 import subprocess
+import tempfile
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 
 # ---------------- CONFIG & PATHS ----------------
 
@@ -49,6 +50,7 @@ def load_selected():
         logging.exception("Failed to load selected printer")
         return None
 
+
 # ---------------- CUPS HELPERS ----------------
 
 try:
@@ -85,90 +87,87 @@ def list_cups_printers():
         return []
 
 
-def send_raw_to_printer(printer_name: str, raw_bytes: bytes):
+def print_file_via_cups(printer_name: str, file_path: str):
     """
-    Send raw ESC/POS bytes to a printer on macOS.
-    Uses 'lp -o raw'.
+    Print a file (PNG, PDF, etc.) using normal CUPS pipeline.
+    No -o raw, so the driver renders it (like Chrome).
     """
     try:
-        proc = subprocess.run(
-            ["lp", "-d", printer_name, "-o", "raw"],
-            input=raw_bytes,
+        subprocess.run(
+            ["lp", "-d", printer_name, file_path],
             check=True
         )
-    except Exception as e:
-        logging.exception(f"Failed to send raw data to printer {printer_name}")
+    except Exception:
+        logging.exception(f"Failed to print file via CUPS on printer {printer_name}")
         raise
 
 
-# ---------------- IMAGE → ESC/POS ----------------
+# ---------------- RASTER RECEIPT RENDERING ----------------
 
-def convert_image_to_escpos(base64_string: str) -> bytes:
+def print_receipt_raster(printer_name: str, plain_text: str):
     """
-    Same logic as your Windows version, adapted 1:1.
-    """
-    print(f"DEBUG: Logo Input Length: {len(base64_string)}")
-    print(f"DEBUG: Logo Start: {base64_string[:50]}...")
+    Render a receipt image:
 
+        Reçu Client  (centered header)
+        <plain_text lines...>
+
+    Then print it via CUPS as a PNG.
+    """
+    MAX_WIDTH = 576  # typical width for 80mm thermal printers (adjust if needed)
+    padding = 20
+    line_height = 18
+
+    # Split text into lines
+    lines = plain_text.split("\n")
+
+    # Header
+    header_text = "Reçu Client"
+    header_height = 40
+
+    # Total height = padding + header + padding + text + padding
+    text_height = len(lines) * line_height
+    height = padding + header_height + padding + text_height + padding
+
+    # Create white canvas
+    canvas = Image.new("RGB", (MAX_WIDTH, height), "white")
+    draw = ImageDraw.Draw(canvas)
+
+    # Try to use Menlo (monospace) if available
     try:
-        # Remove header if present
-        if "," in base64_string:
-            base64_string = base64_string.split(",", 1)[1]
+        header_font = ImageFont.truetype("/System/Library/Fonts/Menlo.ttc", 18)
+        body_font = ImageFont.truetype("/System/Library/Fonts/Menlo.ttc", 12)
+    except Exception:
+        header_font = None
+        body_font = None
 
-        image_data = base64.b64decode(base64_string)
-        im = Image.open(io.BytesIO(image_data))
+    # Draw centered header
+    w, _ = draw.textsize(header_text, font=header_font)
+    draw.text(
+        ((MAX_WIDTH - w) // 2, padding),
+        header_text,
+        fill="black",
+        font=header_font
+    )
 
-        # Resize to ~384px width (typical 58mm thermal)
-        MAX_WIDTH = 384
-        if im.width > MAX_WIDTH:
-            ratio = MAX_WIDTH / float(im.width)
-            new_height = int(im.height * ratio)
-            if hasattr(Image, "Resampling"):
-                resample_method = Image.Resampling.LANCZOS
-            else:
-                resample_method = Image.LANCZOS
-            im = im.resize((MAX_WIDTH, new_height), resample_method)
+    # Draw receipt text below header
+    y = padding + header_height
+    for line in lines:
+        draw.text((20, y), line, fill="black", font=body_font)
+        y += line_height
 
-        # Handle transparency -> white background
-        if im.mode in ("RGBA", "LA") or (im.mode == "P" and "transparency" in im.info):
-            bg = Image.new("RGB", im.size, (255, 255, 255))
-            im = im.convert("RGBA")
-            alpha = im.split()[3]
-            bg.paste(im, mask=alpha)
-            im = bg
-        else:
-            im = im.convert("RGB")
+    # Save to temporary PNG and send to CUPS
+    with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
+        canvas.save(tmp.name, "PNG")
+        tmp_path = tmp.name
 
-        # Grayscale
-        im = im.convert("L")
-
-        # Threshold
-        threshold = 190
-        im = im.point(lambda p: 255 if p > threshold else 0)
-        im = im.convert("1")  # 1-bit
-
-        width_bytes = (im.width + 7) // 8
-        header = (
-            b"\x1d\x76\x30\x00"
-            + width_bytes.to_bytes(2, "little")
-            + im.height.to_bytes(2, "little")
-        )
-
-        img_bytes = bytearray(im.tobytes())
-        for i in range(len(img_bytes)):
-            img_bytes[i] ^= 0xFF  # invert bits
-
-        return header + bytes(img_bytes)
-
-    except Exception as e:
-        print(f"Logo Conversion Error: {e}")
-        return b""
+    print_file_via_cups(printer_name, tmp_path)
 
 
 # ---------------- FLASK APP ----------------
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
+
 
 @app.route("/printers", methods=["GET"])
 def list_printers():
@@ -202,36 +201,23 @@ def status():
     printer = load_selected()
     connected = False
     if printer:
-        # Simple check: see if it shows in list
         connected = printer in list_cups_printers()
     return jsonify(selected=printer, connected=connected)
 
 
-@app.route("/print/drawer", methods=["POST"])
-def open_drawer():
-    printer = load_selected()
-    if not printer:
-        return jsonify(error="No printer selected"), 404
-
-    try:
-        # ESC/POS drawer kick
-        drawer_cmd = b"\x1b\x70\x00\x19\xfa"
-        send_raw_to_printer(printer, drawer_cmd)
-        return jsonify(result="drawer opened")
-    except Exception:
-        logging.exception("Drawer open failed")
-        return jsonify(error="Failed to open drawer"), 500
-
-
 @app.route("/print/test", methods=["POST"])
 def test_print():
+    """
+    Simple test endpoint:
+    prints a small test receipt with 'Reçu Client' + 2 lines.
+    """
     printer = load_selected()
     if not printer:
         return jsonify(error="No printer selected"), 404
 
     try:
-        data = b"Success from macOS\n"
-        send_raw_to_printer(printer, data)
+        test_text = "Test ligne 1\nTest ligne 2\nMerci d'utiliser Ramti 😉"
+        print_receipt_raster(printer, test_text)
         return jsonify(result="test printed")
     except Exception:
         logging.exception("Test print failed")
@@ -239,57 +225,37 @@ def test_print():
 
 
 @app.route("/print/raw", methods=["POST"])
-def print_raw_bytes():
-    print("\n--- NEW PRINT REQUEST (macOS) ---")
+def print_raw():
+    """
+    macOS-specific print endpoint.
+
+    Expects JSON:
+    {
+      "plainTextReceipt": "Ramti Salon\nItem A ...\nItem B ...\nTotal: 120 DH"
+    }
+
+    It will print:
+
+        Reçu Client
+        Ramti Salon
+        Item A ...
+        ...
+    """
     printer = load_selected()
     if not printer:
         return jsonify(error="No printer selected"), 404
 
-    req_data = request.get_json() or {}
-    b64_text = req_data.get("data")        # Receipt text (base64)
-    b64_logo = req_data.get("logo")        # Logo image (base64)
-    should_print_logo = req_data.get("printLogo", False)
+    data = request.get_json() or {}
+    plain_text = data.get("plainTextReceipt")
 
-    if not b64_text:
-        return jsonify(error="No data provided"), 400
+    if not plain_text:
+        return jsonify(error="plainTextReceipt is required on macOS"), 400
 
     try:
-        print("--> Decoding Text...")
-        receipt_bytes = base64.b64decode(b64_text)
-
-        drawer_cmd = b"\x1b\x70\x00\x19\xfa"
-        chunks = []
-
-        # Kick drawer
-        print("--> ACTION: Kick Drawer")
-        chunks.append(drawer_cmd)
-
-        # Logo
-        if should_print_logo and b64_logo:
-            print("--> ACTION: Processing Logo...")
-            logo_bytes = convert_image_to_escpos(b64_logo)
-            if logo_bytes:
-                # Center align
-                chunks.append(b"\x1b\x61\x01")
-                chunks.append(logo_bytes)
-                # Back to left
-                chunks.append(b"\x1b\x61\x00")
-                print("    Logo bytes prepared.")
-            else:
-                print("    Logo conversion failed or empty.")
-
-        # Receipt text
-        print("--> ACTION: Print Text")
-        chunks.append(receipt_bytes)
-
-        # Concatenate and send once
-        final_bytes = b"".join(chunks)
-        send_raw_to_printer(printer, final_bytes)
-
-        print("--- SUCCESS (macOS) ---\n")
+        print_receipt_raster(printer, plain_text)
         return jsonify(result="success")
     except Exception as e:
-        logging.exception("Critical print error on macOS")
+        logging.exception("Mac raster print failed")
         return jsonify(error=str(e)), 500
 
 
