@@ -34,13 +34,12 @@ logging.basicConfig(
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-# Add console logging too (so you see everything in Terminal)
 console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.INFO)
 console_handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(message)s"))
 logger.addHandler(console_handler)
 
-logger.info("=== Starting PrintAgentService (macOS) ===")
+logger.info("=== Starting PrintAgentService (macOS raster mode, small logo + bigger text) ===")
 
 # ---------------- PERSISTENCE ----------------
 
@@ -92,7 +91,6 @@ def list_cups_printers():
         except Exception:
             logger.exception("Error while listing printers via pycups")
 
-    # Fallback: parse lpstat
     try:
         out = subprocess.check_output(["lpstat", "-p"], text=True)
         names = []
@@ -108,50 +106,34 @@ def list_cups_printers():
         return []
 
 
-def send_raw_to_printer(printer_name: str, raw_bytes: bytes):
-    """
-    Raw ESC/POS send. Only works if printer queue is truly RAW.
-    Used for /print/drawer.
-    """
-    logger.info(
-        "send_raw_to_printer → printer=%s, bytes=%d",
-        printer_name,
-        len(raw_bytes),
-    )
-    try:
-        result = subprocess.run(
-            ["lp", "-d", printer_name, "-o", "raw"],
-            input=raw_bytes,
-            capture_output=True,
-            check=False,
-        )
-        logger.info(
-            "lp (raw) returncode=%s stdout=%s stderr=%s",
-            result.returncode,
-            result.stdout.decode("utf-8", errors="ignore")
-            if isinstance(result.stdout, (bytes, bytearray))
-            else result.stdout,
-            result.stderr.decode("utf-8", errors="ignore")
-            if isinstance(result.stderr, (bytes, bytearray))
-            else result.stderr,
-        )
-        if result.returncode != 0:
-            raise RuntimeError(f"lp raw failed with code {result.returncode}")
-    except Exception:
-        logger.exception("Failed to send raw data to printer %s", printer_name)
-        raise
-
-
 # ---------------- TEXT+LOGO → RASTER IMAGE ----------------
+
+def _get_font() -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
+    """
+    Try to use a readable monospace font.
+    Fallback to default PIL font if Menlo is not available.
+    """
+    try:
+        # Menlo is usually present on macOS
+        return ImageFont.truetype("Menlo.ttc", 16)
+    except Exception:
+        try:
+            return ImageFont.truetype("Courier New", 16)
+        except Exception:
+            logger.warning("Could not load Menlo/Courier; falling back to default font")
+            return ImageFont.load_default()
 
 
 def render_receipt_to_image(
-    plain_text: str, logo_b64: Optional[str], max_width: int = 576
+    plain_text: str, logo_b64: Optional[str], max_width: int = 384
 ) -> str:
     """
     Build a single PNG ticket (logo + text) and return the temp file path.
-    """
 
+    - max_width: total width of the canvas in pixels (mapped to printer dots).
+    - Logo will be shrunk to a smaller width (MAX_LOGO_WIDTH) so it is not huge.
+    - Text uses a bigger font & line height so it's readable on the 58mm roll.
+    """
     logger.info(
         "render_receipt_to_image → text_len=%d, logo_present=%s, max_width=%d",
         len(plain_text or ""),
@@ -159,7 +141,10 @@ def render_receipt_to_image(
         max_width,
     )
 
+    # ---- Decode and resize logo (smaller) ----
     logo_img = None
+    MAX_LOGO_WIDTH = 256  # smaller than full paper width so logo is not dominating
+
     if logo_b64:
         try:
             logger.info("Decoding logo base64 (first 60 chars): %s...", logo_b64[:60])
@@ -169,23 +154,26 @@ def render_receipt_to_image(
             logo_img = Image.open(io.BytesIO(logo_data)).convert("RGBA")
             logger.info("Logo image decoded: size=%sx%s", logo_img.width, logo_img.height)
 
-            if logo_img.width > max_width:
-                ratio = max_width / logo_img.width
-                new_size = (max_width, int(logo_img.height * ratio))
+            if logo_img.width > MAX_LOGO_WIDTH:
+                ratio = MAX_LOGO_WIDTH / logo_img.width
+                new_size = (MAX_LOGO_WIDTH, int(logo_img.height * ratio))
                 logo_img = logo_img.resize(new_size, Image.LANCZOS)
                 logger.info("Logo resized to: %sx%s", logo_img.width, logo_img.height)
         except Exception:
             logger.exception("Failed to decode logo image")
             logo_img = None
 
+    # ---- Prepare text ----
     lines = (plain_text or "").split("\n")
     logger.info("Number of text lines: %d", len(lines))
 
-    line_height = 18      # tweak if receipt is too tall/short
-    padding_x = 20        # left padding
-    padding_top = 20
-    padding_bottom = 20
-    spacing_logo_text = 20
+    font = _get_font()
+    # Use a larger line height so the text isn't tiny
+    line_height = 26  # tweak 24–28 if needed
+    padding_x = 10
+    padding_top = 10
+    padding_bottom = 10
+    spacing_logo_text = 12
 
     logo_height = logo_img.height if logo_img else 0
     text_height = line_height * max(len(lines), 1)
@@ -203,10 +191,9 @@ def render_receipt_to_image(
     canvas = Image.new("RGB", (width, height), "white")
     draw = ImageDraw.Draw(canvas)
 
-    font = None  # default font
-
     current_y = padding_top
     if logo_img:
+        # Center the logo horizontally
         x_logo = (width - logo_img.width) // 2
         canvas.paste(logo_img, (x_logo, current_y), logo_img)
         logger.info(
@@ -271,13 +258,7 @@ def print_raster_ticket(printer_name: str, plain_text: str, logo_b64: Optional[s
         if result.returncode != 0:
             raise RuntimeError(f"lp image failed with code {result.returncode}")
     finally:
-        # For debugging, we KEEP the PNG (so you can open it and see).
-        # If you want to delete it later, uncomment the remove.
-        # try:
-        #     os.remove(png_path)
-        #     logger.info("Deleted temp PNG %s", png_path)
-        # except Exception:
-        #     logger.warning("Could not delete temp file %s", png_path)
+        # Keep the PNG for now so you can inspect if needed
         logger.info("Keeping temp PNG at %s for inspection", png_path)
 
 
@@ -289,20 +270,20 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route("/printers", methods=["GET"])
 def list_printers_route():
-    logger.info("Endpoint /printers called")
+    logger.info("GET /printers")
     printers = list_cups_printers()
     return jsonify(printers=printers)
 
 
 @app.route("/selected", methods=["GET"])
-def get_selected():
+def get_selected_route():
     printer = load_selected()
     logger.info("GET /selected → %s", printer)
     return jsonify(selected=printer)
 
 
 @app.route("/select-printer", methods=["POST"])
-def select_printer():
+def select_printer_route():
     data = request.get_json() or {}
     name = data.get("name")
     logger.info("POST /select-printer with name=%s", name)
@@ -322,7 +303,7 @@ def select_printer():
 
 
 @app.route("/status", methods=["GET"])
-def status():
+def status_route():
     printer = load_selected()
     available = list_cups_printers()
     connected = printer in available if printer else False
@@ -335,26 +316,8 @@ def status():
     return jsonify(selected=printer, connected=connected)
 
 
-@app.route("/print/drawer", methods=["POST"])
-def open_drawer():
-    logger.info("POST /print/drawer")
-    printer = load_selected()
-    if not printer:
-        logger.warning("Drawer requested but no printer selected")
-        return jsonify(error="No printer selected"), 404
-
-    try:
-        drawer_cmd = b"\x1b\x70\x00\x19\xfa"
-        send_raw_to_printer(printer, drawer_cmd)
-        logger.info("Drawer command sent successfully")
-        return jsonify(result="drawer opened")
-    except Exception:
-        logger.exception("Drawer open failed")
-        return jsonify(error="Failed to open drawer"), 500
-
-
 @app.route("/print/test", methods=["POST"])
-def test_print():
+def test_print_route():
     logger.info("POST /print/test")
     printer = load_selected()
     if not printer:
@@ -362,34 +325,13 @@ def test_print():
         return jsonify(error="No printer selected"), 404
 
     try:
-        text = "Success from macOS\n"
+        text = "Success from macOS raster mode\n"
         logger.info(
-            "Sending simple text test to lp: printer=%s, text=%r", printer, text
+            "Sending simple raster test ticket to printer=%s, text=%r",
+            printer,
+            text,
         )
-        result = subprocess.run(
-            ["lp", "-d", printer],
-            input=text.encode("utf-8"),
-            capture_output=True,
-            check=False,
-        )
-        stdout = (
-            result.stdout.decode("utf-8", errors="ignore")
-            if isinstance(result.stdout, (bytes, bytearray))
-            else result.stdout
-        )
-        stderr = (
-            result.stderr.decode("utf-8", errors="ignore")
-            if isinstance(result.stderr, (bytes, bytearray))
-            else result.stderr
-        )
-        logger.info(
-            "lp (test) returncode=%s stdout=%s stderr=%s",
-            result.returncode,
-            stdout,
-            stderr,
-        )
-        if result.returncode != 0:
-            raise RuntimeError(f"lp test failed with code {result.returncode}")
+        print_raster_ticket(printer, text, None)
         return jsonify(result="test printed")
     except Exception:
         logger.exception("Test print failed")
@@ -397,7 +339,7 @@ def test_print():
 
 
 @app.route("/print/raw", methods=["POST"])
-def print_raw_bytes():
+def print_raw_route():
     logger.info("POST /print/raw → NEW PRINT REQUEST (macOS raster)")
     printer = load_selected()
     if not printer:
@@ -420,7 +362,7 @@ def print_raw_bytes():
         should_print_logo,
     )
 
-    # Determine text to render
+    # Prefer plainTextReceipt (from your TS generator)
     if not plain_text:
         logger.info("No plainTextReceipt provided, falling back to base64 'data'")
         if not b64_text:
@@ -460,7 +402,7 @@ def print_raw_bytes():
 
 
 @app.route("/initialize", methods=["POST"])
-def initialize():
+def initialize_route():
     logger.info("POST /initialize")
     try:
         if os.path.exists(SELECTED_FILE):
